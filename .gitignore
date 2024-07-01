@@ -1,0 +1,37 @@
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
+
+# Dependency directories
+/target/
+/node_modules/
+/bower_components/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Build output
+/build/
+/dist/
+
+# Logs and temporary files
+/logs/
+/temp/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Application configuration
+/application.properties
+
+# Ignore all files in a directory
+# /path/to/directory/*
+
+# Ignore a specific file
+# /path/to/file.ext
