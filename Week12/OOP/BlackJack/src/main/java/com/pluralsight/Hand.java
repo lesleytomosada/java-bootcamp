@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> cards;
 
-    public void deal(Card card){
+    public Hand() {
+        cards = new ArrayList<>();
+    }
+
+    public void receive(Card card){
         cards.add(card);
     }
 
