@@ -8,7 +8,7 @@ public class UserInterface {
     Dealership dealership;
 
     public UserInterface(){
-        display();
+
     }
 
     void display() {
@@ -78,7 +78,7 @@ public class UserInterface {
             String color = vehicle.getColor();
             int odometer = vehicle.getOdometer();
             double price = vehicle.getPrice();
-            System.out.printf("%d %d %s %s %s %s %d %f", vin, year, make, model, vehicleType, color, odometer, price);
+            System.out.printf("%d %d %s %s %s %s %d %f\n", vin, year, make, model, vehicleType, color, odometer, price);
         }
     }
 
