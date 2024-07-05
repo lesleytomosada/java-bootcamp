@@ -18,6 +18,7 @@ public class DealershipFileManager {
                 String line = scanner.nextLine();
                 lines.add(line);
             }
+            scanner.close();
             return getDealership(lines);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

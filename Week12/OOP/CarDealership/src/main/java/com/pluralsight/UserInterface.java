@@ -1,15 +1,12 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     Dealership dealership;
 
-    public UserInterface(){
-
-    }
+    Scanner scanner = new Scanner(System.in);
 
     void display() {
         init();
@@ -27,8 +24,7 @@ public class UserInterface {
 
 
     private void displayMenu(){
-        Scanner scanner = new Scanner(System.in);
-        int response = 99;
+        int response;
         do {
             System.out.print("""
                     Please choose an option:
@@ -50,7 +46,6 @@ public class UserInterface {
             } else {
                 handleResponse(response);
             }
-            handleResponse(response);
         } while (response != 99);
     }
 
@@ -68,22 +63,44 @@ public class UserInterface {
         }
     }
 
-    private void displayVehicles(List<Vehicle> vehicles){
-        for (Vehicle vehicle: vehicles){
-            int vin = vehicle.getVin();
-            int year = vehicle.getYear();
-            String make = vehicle.getMake();
-            String model = vehicle.getModel();
-            String vehicleType = vehicle.getVehicleType();
-            String color = vehicle.getColor();
-            int odometer = vehicle.getOdometer();
-            double price = vehicle.getPrice();
-            System.out.printf("%d %d %s %s %s %s %d %f\n", vin, year, make, model, vehicleType, color, odometer, price);
+    private void displayVehicles(List<Vehicle> vehicles) {
+        // Define column widths. Adjust these values based on your data for better alignment.
+        int vinWidth = 10;
+        int yearWidth = 6;
+        int makeWidth = 10;
+        int modelWidth = 10;
+        int typeWidth = 10;
+        int colorWidth = 10;
+        int odometerWidth = 10;
+        int priceWidth = 10;
+
+        // Print header
+        System.out.printf("%-" + vinWidth + "s %-" + yearWidth + "s %-" + makeWidth + "s %-" + modelWidth + "s %-" + typeWidth + "s %-" + colorWidth + "s %-" + odometerWidth + "s %-" + priceWidth + "s\n", "VIN", "Year", "Make", "Model", "Type", "Color", "Odometer", "Price");
+
+        // Print each vehicle's details
+        for (Vehicle vehicle : vehicles) {
+            System.out.printf("%-" + vinWidth + "d %-" + yearWidth + "d %-" + makeWidth + "s %-" + modelWidth + "s %-" + typeWidth + "s %-" + colorWidth + "s %-" + odometerWidth + "d $%-" + (priceWidth-1) + ".2f\n",
+                    vehicle.getVin(),
+                    vehicle.getYear(),
+                    vehicle.getMake(),
+                    vehicle.getModel(),
+                    vehicle.getVehicleType(),
+                    vehicle.getColor(),
+                    vehicle.getOdometer(),
+                    vehicle.getPrice());
         }
+        System.out.println();
     }
 
     void processGetByPriceRequest() {
-
+        System.out.print("Min Price: ");
+        double minPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Max Price: ");
+        double maxPrice = scanner.nextDouble();
+        scanner.nextLine();
+        List<Vehicle> priceFiltered = dealership.getVehiclesByPrice(maxPrice, minPrice);
+        displayVehicles(priceFiltered);
     }
 
     void processGetByMakeModelRequest() {
