@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Dealership {
     private String name;
@@ -40,7 +41,7 @@ public class Dealership {
         return null;
     }
 
-    public ArrayList<Vehicle> getAllVehicles(){
+    public List<Vehicle> getAllVehicles(){
         return inventory;
     }
 
